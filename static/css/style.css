@@ -1,0 +1,75 @@
+*:focus
+{
+    outline: none;
+}
+
+body
+{
+    font-family: Helvetica, Arial;
+    margin: 0;
+    background-color: #fff;
+ 
+}
+.app-cards{
+    margin: auto;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 5px 5px 2px 5px #eee;
+}
+#music-list{
+    max-height: 200px;
+    margin-bottom: 1px;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+}
+#rating-list{
+    max-height: 150px;
+    margin-bottom: 1px;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+}
+.star-rating {
+    line-height:32px;
+    font-size:1.25em;
+  }
+  
+.star-rating .fa-star{color: gold;}
+
+
+li{
+    display: inline;
+}
+.btns{
+    padding-top: 10px;
+}
+.header{
+    padding: 5px 0px 5px 0px;
+}
+
+/**
+Playlist
+**/
+#music-list li {
+    cursor:pointer;
+    display:block;
+    margin:0;
+    padding:5px 0;
+    }
+#music-list li:hover{
+    background-color:rgba(0, 0, 0, .1);
+}
+
+.track-num{
+    padding: auto;
+}
+.track-title{
+    padding: 0px 5px 0px 2px;
+
+}
+.track-artist{
+    padding: 0px 5px 0px 2px;
+
+}
+.track-duration{
+    padding: auto;
+
+}

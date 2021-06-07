@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>musiXent</title>
+        <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+
+
+        <div class="container"> 
+            <center>
+                <div class="app-cards" id="player-container">
+
+                    <audio id="audio-player" controls preload="none">
+                        <source src="{{ url_for('static', filename='sample.mp3')}}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                        <button id="play"></button><button id="stop"></button>
+                    </audio> 
+
+                </div>
+            
+                <div class="app-cards" id="rating-container">
+                    <div class="row col header">
+                        <span>Rate this Song and Submit</span>
+                    </div>
+                    <form>
+                        <ul class="list-group" id="rating-list">
+                            <li class="list-group-item ">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <div id="joy" class="star-rating">😙
+                                        <i class="rating-star fa fa-star-o" data-rating="1"></i>
+                                        <i class="rating-star fa fa-star-o" data-rating="2"></i>
+                                        <i class="rating-star fa fa-star-o" data-rating="3"></i>
+                                        <i class="rating-star fa fa-star-o" data-rating="4"></i>
+                                        <i class="rating-star fa fa-star-o" data-rating="5"></i>
+                                        <input type="hidden" name="first-rating-value" class="rating-value" value="0.0">
+                                      </div>
+                                    </div>
+                                  </div>
+                             </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <div class="star-rating">😁
+                                        <span class="fa fa-star-o" data-rating="1"></span>
+                                        <span class="fa fa-star-o" data-rating="2"></span>
+                                        <span class="fa fa-star-o" data-rating="3"></span>
+                                        <span class="fa fa-star-o" data-rating="4"></span>
+                                        <span class="fa fa-star-o" data-rating="5"></span>
+                                        <input type="hidden" name="whatever2" class="rating-value" value="1.9">
+                                      </div>
+                                    </div>
+                                  </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <div class="star-rating">😂
+                                        <span class="fa fa-star-o" data-rating="1"></span>
+                                        <span class="fa fa-star-o" data-rating="2"></span>
+                                        <span class="fa fa-star-o" data-rating="3"></span>
+                                        <span class="fa fa-star-o" data-rating="4"></span>
+                                        <span class="fa fa-star-o" data-rating="5"></span>
+                                        <input type="hidden" name="whatever3" class="rating-value" value="4.1">
+                                      </div>
+                                    </div>
+                                  </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <div class="star-rating">🙄
+                                        <span class="fa fa-star-o" data-rating="1"></span>
+                                        <span class="fa fa-star-o" data-rating="2"></span>
+                                        <span class="fa fa-star-o" data-rating="3"></span>
+                                        <span class="fa fa-star-o" data-rating="4"></span>
+                                        <span class="fa fa-star-o" data-rating="5"></span>
+                                        <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                                      </div>
+                                    </div>
+                                  </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <div class="star-rating">😪
+                                        <span class="fa fa-star-o" data-rating="1"></span>
+                                        <span class="fa fa-star-o" data-rating="2"></span>
+                                        <span class="fa fa-star-o" data-rating="3"></span>
+                                        <span class="fa fa-star-o" data-rating="4"></span>
+                                        <span class="fa fa-star-o" data-rating="5"></span>
+                                        <input type="hidden" name="whatever2" class="rating-value" value="1.9">
+                                      </div>
+                                    </div>
+                                  </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <div class="star-rating">😡
+                                        <span class="fa fa-star-o" data-rating="1"></span>
+                                        <span class="fa fa-star-o" data-rating="2"></span>
+                                        <span class="fa fa-star-o" data-rating="3"></span>
+                                        <span class="fa fa-star-o" data-rating="4"></span>
+                                        <span class="fa fa-star-o" data-rating="5"></span>
+                                        <input type="hidden" name="whatever3" class="rating-value" value="4.1">
+                                      </div>
+                                    </div>
+                                  </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <div class="star-rating">💃🕺
+                                        <span class="fa fa-star-o" data-rating="1"></span>
+                                        <span class="fa fa-star-o" data-rating="2"></span>
+                                        <span class="fa fa-star-o" data-rating="3"></span>
+                                        <span class="fa fa-star-o" data-rating="4"></span>
+                                        <span class="fa fa-star-o" data-rating="5"></span>
+                                        <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                                      </div>
+                                    </div>
+                                  </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <div class="star-rating">😍💖
+                                        <span class="fa fa-star-o" data-rating="1"></span>
+                                        <span class="fa fa-star-o" data-rating="2"></span>
+                                        <span class="fa fa-star-o" data-rating="3"></span>
+                                        <span class="fa fa-star-o" data-rating="4"></span>
+                                        <span class="fa fa-star-o" data-rating="5"></span>
+                                        <input type="hidden" name="whatever2" class="rating-value" value="1.9">
+                                      </div>
+                                    </div>
+                                  </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                      <div class="star-rating">🎈🎉
+                                        <span class="fa fa-star-o" data-rating="1"></span>
+                                        <span class="fa fa-star-o" data-rating="2"></span>
+                                        <span class="fa fa-star-o" data-rating="3"></span>
+                                        <span class="fa fa-star-o" data-rating="4"></span>
+                                        <span class="fa fa-star-o" data-rating="5"></span>
+                                        <input type="hidden" name="whatever3" class="rating-value" value="4.1">
+                                      </div>
+                                    </div>
+                                  </div>
+                            </li>
+                        </ul> 
+                        <div class="row col btns">
+                            <div class="col col-lg-6">
+                                <button class="btn btn-outline-primary btn-sm btn-block" type="submit">Submit</button>
+                            </div>
+                            <div class="col col-lg-6">
+                                <button class="btn btn-outline-secondary btn-sm btn-block" onclick="resetStars()" type="reset">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                        
+                </div>
+    
+                <div class="app-cards" id="playlist-container">
+                    <div class="row header" >
+                        <div class="col col-lg-6">
+                            Play List
+                        </div>
+                        <div class="col col-lg-6">
+                            <select class="form-control form-control-sm" aria-label="Playlist API">
+                                <option selected>Music Source</option>
+                                <option value="1">Spotify</option>
+                                <option value="2">Emotify</option>
+                                <option value="3">SoundCloud</option>
+                              </select>
+                        </div>
+                    </div>
+                    <ul class="list-group" id="music-list">
+                        <li> 
+                          <span class="track-num">1. </span>
+                          <span class="track-title">Rythm and Soul</span>
+                          <span class="track-artist">Artiste</span>
+                          <span class="track-duration badge">2.59</span>
+                          <!-- <span class="track-duration">2:59</span> -->
+                        </li>
+                        <li> 
+                          <span class="track-num">2. </span>
+                          <span class="track-title">Rythm and Soul</span>
+                          <span class="track-artist">Artiste</span>
+                          <span class="track-duration badge">2.59</span>
+                          <!-- <span class="track-duration">2:59</span> -->
+                        </li>
+                        <li> 
+                          <span class="track-num">3. </span>
+                          <span class="track-title">Rythm and Soul</span>
+                          <span class="track-artist">Artiste</span>
+                          <span class="track-duration badge">2.59</span>
+                          <!-- <span class="track-duration">2:59</span> -->
+                        </li>
+                        <li> 
+                          <span class="track-num">4. </span>
+                          <span class="track-title">Rythm and Soul</span>
+                          <span class="track-artist">Artiste Name</span>
+                          <span class="track-duration badge">2.59</span>
+                          <!-- <span class="track-duration">2:59</span> -->
+                        </li>
+                        <li> 
+                          <span class="track-num">5. </span>
+                          <span class="track-title">Rythm and Soul</span>
+                          <span class="track-artist">Artiste</span>
+                          <span class="track-duration badge">2.59</span>
+                          <!-- <span class="track-duration">2:59</span> -->
+                        </li>
+                    </ul> 
+                </div>
+            </center>         
+        </div>
+
+
+
+    </body>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v4.7.0/js/all.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript"></script>
+</html>
