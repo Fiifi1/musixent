@@ -1,32 +1,3 @@
-let audio_info = document.getElementById("audio-player");
-
-document.getElementById('play').addEventListener('click', function(){
-    audio_info.play();}, false);
-
-document.getElementById('stop').addEventListener('click', function(){
-    audio_info.pause();
-}, false);
-
-
-
-// audio_info.addEventListener('playing', function(e){
-//     console.log('Audio playback has started ...');
-//     console.log('Playback started at : '+ e.target.currentTime +" seconds");
-// }, false);
-// audio_info.addEventListener('pause', function(e){
-//     console.log('Audio playback has been paused ...');
-//     console.log('Playback paused at : '+ e.target.currentTime +" seconds");
-// }, false);
-
-// audio_info.addEventListener('ended', function(e){
-//     console.log('Playback has ended');
-// }, false);
-// audio_info.addEventListener('volumechange', function(e){
-//     console.log("Volume has changed ...");
-//     console.log("Volume is now "+ e.target.volume);
-// }, false);
-
-
 let star_rating = $('.star-rating .fa');
 
 let SetRatingStar = function() {
@@ -38,8 +9,6 @@ let SetRatingStar = function() {
     }
   });
 };
-
-
 
 star_rating.on('click', function() {
   star_rating.siblings('input.rating-value').val($(this).data('rating'));
@@ -62,7 +31,7 @@ let resetStars = function(){
 /**
  * Get songs from
  */
-// Document has been loaded
+//Document has been loaded
 $( document ).ready(function() {
     // Helper Function to Extract Access Token for URL
    const getUrlParameter = (sParam) => {
@@ -121,7 +90,7 @@ $( document ).ready(function() {
            let id = data.tracks.items[count].id;
            // Constructing two different iframes to embed the song
 
-           console.log(id)
+           //console.log(id)
 
            let src_str = `https://open.spotify.com/embed/track/${id}`;
            let iframe = `<div class='song'><iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>`;

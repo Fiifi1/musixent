@@ -16,6 +16,7 @@ body
     box-shadow: 5px 5px 2px 5px #eee;
 }
 #music-list{
+    background-color: #eee;
     max-height: 200px;
     margin-bottom: 1px;
     overflow-y:auto;
@@ -56,23 +57,26 @@ form.rating::after {
 Search
 **/
 /* Style the search field */
-#search-text[type=text] {
-    padding: 10px;
-    font-size: 14px;
+#search_text[type=text] {
+    padding: 5px;
+    font-size: 16px;
     border: 1px solid grey;
     float: left;
-    max-width: 50%;
+    max-width: 80%;
     background: #f1f1f1;
   }
+input#search_text{
+    max-height: 80px;
+}
   
   /* Style the submit button */
-#search-button{
+#search_button{
     float: left;
     max-width: 20%;
-    padding: 10px;
-    background: #2196F3;
+    padding: 5px;
+    background: #0d81e0;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     border: 1px solid grey;
     border-left: none; /* Prevent double borders */
     cursor: pointer;
