@@ -88,7 +88,7 @@ $( document ).ready(function() {
    let client_id = 'c81cd87048404778a6fc82b97ca910b0';
    // Use the following site to convert your regular url to the encoded version:
    // https://www.url-encode-decode.com/
-   let redirect_uri = 'https%3A%2F%2Fmujibsardar.github.io%2Fspotify_jquery_only'; // GitHub Pages URL or whatever your public url to this app is
+   let redirect_uri = 'https%3A%2F%2Fmusixent.herokuapp.com%2F'; // GitHub Pages URL or whatever your public url to this app is
    // *************** END *************************
 
    const redirect = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}`;
@@ -98,7 +98,7 @@ $( document ).ready(function() {
    }
 
    // Search button has been clicked
-   $( "#search_button" ).click(function() {
+   $( "#search-button" ).click(function() {
      //Get the value of the search box
      let raw_search_query = $('#search-text').val();
      let search_query = encodeURI(raw_search_query);
@@ -115,14 +115,14 @@ $( document ).ready(function() {
          let num_of_tracks = data.tracks.items.length;
          let count = 0;
          // Max number of songs is 12
-         const max_songs = 12;
+         const max_songs = 20;
          while(count < max_songs && count < num_of_tracks){
            // Extract the id of the FIRST song from the data object
            let id = data.tracks.items[count].id;
            // Constructing two different iframes to embed the song
            let src_str = `https://open.spotify.com/embed/track/${id}`;
-           let iframe = `<div class='song'><iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>`;
-           let parent_div = $('#song_'+ count);
+           let iframe = `<div class='list-group'><iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>`;
+           let parent_div = $('#music-list'+ count);
            parent_div.html(iframe);
            count++;
          }

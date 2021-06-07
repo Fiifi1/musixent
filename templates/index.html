@@ -28,7 +28,7 @@
                     <div class="row col header">
                         <span>Rate this Song and Submit</span>
                     </div>
-                    <form>
+                    <form class="rating">
                         <ul class="list-group" id="rating-list">
                             <li class="list-group-item ">
                                 <div class="row">
@@ -175,50 +175,20 @@
                             Play List
                         </div>
                         <div class="col col-lg-6">
-                            <select class="form-control form-control-sm" aria-label="Playlist API">
-                                <option selected>Music Source</option>
-                                <option value="1">Spotify</option>
-                                <option value="2">Emotify</option>
-                                <option value="3">SoundCloud</option>
-                              </select>
+                          <input id="search-text" type="text" placeholder="Search.." name="search">
+                          <button id="search-button"><i class="fa fa-search"></i></button>
                         </div>
                     </div>
                     <ul class="list-group" id="music-list">
-                        <li> 
+                        <!-- <li> 
                           <span class="track-num">1. </span>
                           <span class="track-title">Rythm and Soul</span>
                           <span class="track-artist">Artiste</span>
                           <span class="track-duration badge">2.59</span>
-                          <!-- <span class="track-duration">2:59</span> -->
-                        </li>
-                        <li> 
-                          <span class="track-num">2. </span>
-                          <span class="track-title">Rythm and Soul</span>
-                          <span class="track-artist">Artiste</span>
-                          <span class="track-duration badge">2.59</span>
-                          <!-- <span class="track-duration">2:59</span> -->
-                        </li>
-                        <li> 
-                          <span class="track-num">3. </span>
-                          <span class="track-title">Rythm and Soul</span>
-                          <span class="track-artist">Artiste</span>
-                          <span class="track-duration badge">2.59</span>
-                          <!-- <span class="track-duration">2:59</span> -->
-                        </li>
-                        <li> 
-                          <span class="track-num">4. </span>
-                          <span class="track-title">Rythm and Soul</span>
-                          <span class="track-artist">Artiste Name</span>
-                          <span class="track-duration badge">2.59</span>
-                          <!-- <span class="track-duration">2:59</span> -->
-                        </li>
-                        <li> 
-                          <span class="track-num">5. </span>
-                          <span class="track-title">Rythm and Soul</span>
-                          <span class="track-artist">Artiste</span>
-                          <span class="track-duration badge">2.59</span>
-                          <!-- <span class="track-duration">2:59</span> -->
-                        </li>
+                          --<span class="track-duration">2:59</span> --
+                        </li> -->
+                        
+                        
                     </ul> 
                 </div>
             </center>         
