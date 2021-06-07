@@ -98,9 +98,9 @@ $( document ).ready(function() {
    }
 
    // Search button has been clicked
-   $( "#search-button" ).click(function() {
+   $( "#search_button" ).click(function() {
      //Get the value of the search box
-     let raw_search_query = $('#search-text').val();
+     let raw_search_query = $('#search_text').val();
      let search_query = encodeURI(raw_search_query);
      // Make Spotify API call
      // Note: We are using the track API endpoint.
@@ -120,7 +120,7 @@ $( document ).ready(function() {
            // Extract the id of the FIRST song from the data object
            let id = data.tracks.items[count].id;
            // Constructing two different iframes to embed the song
-           
+
            console.log(id)
 
            let src_str = `https://open.spotify.com/embed/track/${id}`;
