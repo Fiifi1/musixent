@@ -209,35 +209,35 @@ $( document ).ready(function() {
    if(accessToken == null || accessToken == "" || accessToken == undefined){
      window.location.replace(redirect);
    }
-   onload(()=>{
+   $(window).("onload", ()=>{
     $.ajax({
-      url: `https://api.spotify.com/v1/search?q=${search_query}&type=track`,
-      type: 'GET',
-      headers: {
-          'Authorization' : 'Bearer ' + accessToken
-      },
-      success: function(data) {
-        // Load our songs from Spotify into our page
-        let num_of_tracks = data.tracks.items.length;
-        let count = 0;
-        // Max number of songs is 12
-        const max_songs = 20;
-        while(count < max_songs && count < num_of_tracks){
-          // Extract the id of the FIRST song from the data object
-          let id = data.tracks.items[count].id;
-          // Constructing two different iframes to embed the song
+     url: `https://api.spotify.com/v1/search?q=love&type=track`,
+     type: 'GET',
+     headers: {
+         'Authorization' : 'Bearer ' + accessToken
+     },
+     success: function(data) {
+       // Load our songs from Spotify into our page
+       let num_of_tracks = data.tracks.items.length;
+       let count = 0;
+       // Max number of songs is 12
+       const max_songs = 20;
+       while(count < max_songs && count < num_of_tracks){
+         // Extract the id of the FIRST song from the data object
+         let id = data.tracks.items[count].id;
+         // Constructing two different iframes to embed the song
 
-          //console.log(id)
+         //console.log(id)
 
-          let src_str = `https://open.spotify.com/embed/track/${id}`;
-          let iframe = `<div class='song'><iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>`;
-          let parent_div = $('#song_'+ count);
-          parent_div.html(iframe);
-          count++;
-        }
-      }
-    });
+         let src_str = `https://open.spotify.com/embed/track/${id}`;
+         let iframe = `<div class='song'><iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>`;
+         let parent_div = $('#song_'+ count);
+         parent_div.html(iframe);
+         count++;
+       }
+     }
    });
+ });
    // Search button has been clicked
    $( "#search_button" ).click(function() {
      //Get the value of the search box
@@ -246,7 +246,7 @@ $( document ).ready(function() {
      // Make Spotify API call
      // Note: We are using the track API endpoint.
      $.ajax({
-       url: `https://api.spotify.com/v1/search?q=love&type=track`,
+       url: `https://api.spotify.com/v1/search?q=${search_query}&type=track`,
        type: 'GET',
        headers: {
            'Authorization' : 'Bearer ' + accessToken
