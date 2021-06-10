@@ -209,7 +209,7 @@ $( document ).ready(function() {
    if(accessToken == null || accessToken == "" || accessToken == undefined){
      window.location.replace(redirect);
    }
-   $(window).("onload", ()=>{
+   $(window).on("load", ()=>{
     $.ajax({
      url: `https://api.spotify.com/v1/search?q=love&type=track`,
      type: 'GET',
