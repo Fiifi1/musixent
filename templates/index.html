@@ -15,7 +15,7 @@
               <div class="app-cards" id="playlist-container">
                 <div class="row header" >
                     <div class="col col-lg-6">
-                        <span class="badge badge-primary badge-pill"> Play List</span>
+                        <span class="badge badge-primary badge-pill">Play List</span>
                     </div>
                     <div class="col col-lg-6">
                       <input id="search_text" type="text" placeholder="Search Spotify" name="search">
@@ -23,166 +23,192 @@
                     </div>
                 </div>
                 <ul class="list-group" id="music-list">                        
-                    <li><div id="song_0" class="col"></div></li>
-                    <li><div id="song_1" class="col"></div></li>
-                    <li><div id="song_2" class="col"></div></li>
-                    <li><div id="song_3" class="col"></div></li>
-                    <li><div id="song_4" class="col"></div></li>
-                    <li><div id="song_5" class="col"></div></li>
-                    <li><div id="song_6" class="col"></div></li>
-                    <li><div id="song_7" class="col"></div></li>
-                    <li><div id="song_8" class="col"></div></li>
-                    <li><div id="song_9" class="col"></div></li>
-                    <li><div id="song_10" class="col"></div></li>
-                    <li><div id="song_11" class="col"></div></li>                        
+                    <li><div id="song_0"></div></li>
+                    <li><div id="song_1"></div></li>
+                    <li><div id="song_2"></div></li>
+                    <li><div id="song_3"></div></li>
+                    <li><div id="song_4"></div></li>
+                    <li><div id="song_5"></div></li>
+                    <li><div id="song_6"></div></li>
+                    <li><div id="song_7"></div></li>
+                    <li><div id="song_8"></div></li>
+                    <li><div id="song_9"></div></li>
+                    <li><div id="song_10"></div></li>
+                    <li><div id="song_11"></div></li> 
+                    <li><div id="song_12"></div></li>                        
+                    <li><div id="song_13"></div></li>                        
+                    <li><div id="song_14"></div></li>                        
+                    <li><div id="song_15"></div></li>                        
+                    <li><div id="song_16"></div></li>                        
+                    <li><div id="song_17"></div></li>                        
+                    <li><div id="song_18"></div></li>                        
+                    <li><div id="song_19"></div></li>      
                 </ul> 
             </div>
+            <div>
+              <button type="button" id="toggle_rating" class="btn btn-primary" data-toggle="modal" data-target="#sent_rating_modal">
+                Rate Sentiments
+              </button>
+            </div>
 
+            <!-- The Modal -->
+            <div class="modal" id="sent_rating_modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
 
-              <div class="app-cards" id="rating-container">
-                    <div  class="row col header">
-                        <span class="badge badge-primary badge-pill">Rate this Song and Submit</span>
-                    </div>
-                    <form class="rating">
-                        <ul class="list-group" id="rating-list">
-                            <li class="list-group-item ">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                      <div id="joy" class="star-rating"><span style="padding-right:20px;">😙</span>
-                                        <i class="rating-star fa fa-star-o" data-rating="1"></i>
-                                        <i class="rating-star fa fa-star-o" data-rating="2"></i>
-                                        <i class="rating-star fa fa-star-o" data-rating="3"></i>
-                                        <i class="rating-star fa fa-star-o" data-rating="4"></i>
-                                        <i class="rating-star fa fa-star-o" data-rating="5"></i>
-                                        <input type="hidden" name="first-rating-value" class="rating-value" value="0.0">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <span class="badge badge-primary badge-pill">Rate this Song and Submit</span>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                      <form class="rating_form">
+                          <ul style="text-align: left;" class="list-group" id="rating-list">
+                              <li class="list-group-item ">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                        <div class="happy-star-rating"><span style="padding-right:10px;">Happy😁</span>
+                                          <i class="rating-star fa fa-star-o" data-rating="1"></i>
+                                          <i class="rating-star fa fa-star-o" data-rating="2"></i>
+                                          <i class="rating-star fa fa-star-o" data-rating="3"></i>
+                                          <i class="rating-star fa fa-star-o" data-rating="4"></i>
+                                          <i class="rating-star fa fa-star-o" data-rating="5"></i>
+                                          <input type="hidden" name="happy-rating-value" class="happy-rating-value" value="0.0">
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                             </li>
-                            <li class="list-group-item">
+                               </li>
+                              <li class="list-group-item">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                        <div class="sad-star-rating"><span style="padding-right:10px;">Sad😥</span>
+                                          <span class="fa fa-star-o" data-rating="1"></span>
+                                          <span class="fa fa-star-o" data-rating="2"></span>
+                                          <span class="fa fa-star-o" data-rating="3"></span>
+                                          <span class="fa fa-star-o" data-rating="4"></span>
+                                          <span class="fa fa-star-o" data-rating="5"></span>
+                                          <input type="hidden" name="sad-rating-value" class="sad-rating-value" value="0.0">
+                                        </div>
+                                      </div>
+                                    </div>
+                              </li>
+                              <li class="list-group-item">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                        <div class="annoying-star-rating"><span style="padding-right:10px;">Annoying😒</span>
+                                          <span class="fa fa-star-o" data-rating="1"></span>
+                                          <span class="fa fa-star-o" data-rating="2"></span>
+                                          <span class="fa fa-star-o" data-rating="3"></span>
+                                          <span class="fa fa-star-o" data-rating="4"></span>
+                                          <span class="fa fa-star-o" data-rating="5"></span>
+                                          <input type="hidden" name="annoying-star-rating" class="annoying-rating-value" value="0.0">
+                                        </div>
+                                      </div>
+                                    </div>
+                              </li>
+                              <li class="list-group-item">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                        <div class="anxious-star-rating"><span style="padding-right:10px;">Anxious 😰</span>
+                                          <span class="fa fa-star-o" data-rating="1"></span>
+                                          <span class="fa fa-star-o" data-rating="2"></span>
+                                          <span class="fa fa-star-o" data-rating="3"></span>
+                                          <span class="fa fa-star-o" data-rating="4"></span>
+                                          <span class="fa fa-star-o" data-rating="5"></span>
+                                          <input type="hidden" name="anxious-star-rating" class="anxious-rating-value" value="0.0">
+                                        </div>
+                                      </div>
+                                    </div>
+                              </li>
+                              <li class="list-group-item">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                        <div class="relaxing-star-rating"><span style="padding-right:10px;">Relaxing 😎</span>
+                                          <span class="fa fa-star-o" data-rating="1"></span>
+                                          <span class="fa fa-star-o" data-rating="2"></span>
+                                          <span class="fa fa-star-o" data-rating="3"></span>
+                                          <span class="fa fa-star-o" data-rating="4"></span>
+                                          <span class="fa fa-star-o" data-rating="5"></span>
+                                          <input type="hidden" name="relaxing-star-rating" class="relaxing-rating-value" value="0.0">
+                                        </div>
+                                      </div>
+                                    </div>
+                              </li>
+                              <li class="list-group-item">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                        <div class="dreamy-star-rating"><span style="padding-right:10px;">Dreamy 😇</span>
+                                          <span class="fa fa-star-o" data-rating="1"></span>
+                                          <span class="fa fa-star-o" data-rating="2"></span>
+                                          <span class="fa fa-star-o" data-rating="3"></span>
+                                          <span class="fa fa-star-o" data-rating="4"></span>
+                                          <span class="fa fa-star-o" data-rating="5"></span>
+                                          <input type="hidden" name="dreamy-star-rating" class="dreamy-rating-value" value="0.0">
+                                        </div>
+                                      </div>
+                                    </div>
+                              </li>
+                              <li class="list-group-item">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                        <div class="energizing-star-rating"><span style="padding-right:10px;">Energizing ⚡</span>
+                                          <span class="fa fa-star-o" data-rating="1"></span>
+                                          <span class="fa fa-star-o" data-rating="2"></span>
+                                          <span class="fa fa-star-o" data-rating="3"></span>
+                                          <span class="fa fa-star-o" data-rating="4"></span>
+                                          <span class="fa fa-star-o" data-rating="5"></span>
+                                          <input type="hidden" name="energizing-star-rating" class="energizing-rating-value" value="0.0">
+                                        </div>
+                                      </div>
+                                    </div>
+                              </li>
+                              <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                      <div class="star-rating"><span style="padding-right:20px;">😁</span>
+                                      <div class="neutral-star-rating"><span style="padding-right:10px;">Neutral 😐</span>
                                         <span class="fa fa-star-o" data-rating="1"></span>
                                         <span class="fa fa-star-o" data-rating="2"></span>
                                         <span class="fa fa-star-o" data-rating="3"></span>
                                         <span class="fa fa-star-o" data-rating="4"></span>
                                         <span class="fa fa-star-o" data-rating="5"></span>
-                                        <input type="hidden" name="whatever2" class="rating-value" value="0.0">
+                                        <input type="hidden" name="neutral-star-rating" class="neutral-rating-value" value="0.0">
                                       </div>
                                     </div>
                                   </div>
                             </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                      <div class="star-rating"><span style="padding-right:20px;">😂</span>
-                                        <span class="fa fa-star-o" data-rating="1"></span>
-                                        <span class="fa fa-star-o" data-rating="2"></span>
-                                        <span class="fa fa-star-o" data-rating="3"></span>
-                                        <span class="fa fa-star-o" data-rating="4"></span>
-                                        <span class="fa fa-star-o" data-rating="5"></span>
-                                        <input type="hidden" name="whatever3" class="rating-value" value="0.0">
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                      <div class="star-rating"><span style="padding-right:20px;">🙄</span>
-                                        <span class="fa fa-star-o" data-rating="1"></span>
-                                        <span class="fa fa-star-o" data-rating="2"></span>
-                                        <span class="fa fa-star-o" data-rating="3"></span>
-                                        <span class="fa fa-star-o" data-rating="4"></span>
-                                        <span class="fa fa-star-o" data-rating="5"></span>
-                                        <input type="hidden" name="whatever1" class="rating-value" value="0.0">
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                      <div class="star-rating"><span style="padding-right:20px;">😪</span>
-                                        <span class="fa fa-star-o" data-rating="1"></span>
-                                        <span class="fa fa-star-o" data-rating="2"></span>
-                                        <span class="fa fa-star-o" data-rating="3"></span>
-                                        <span class="fa fa-star-o" data-rating="4"></span>
-                                        <span class="fa fa-star-o" data-rating="5"></span>
-                                        <input type="hidden" name="whatever2" class="rating-value" value="0.0">
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                      <div class="star-rating"><span style="padding-right:20px;">😡</span>
-                                        <span class="fa fa-star-o" data-rating="1"></span>
-                                        <span class="fa fa-star-o" data-rating="2"></span>
-                                        <span class="fa fa-star-o" data-rating="3"></span>
-                                        <span class="fa fa-star-o" data-rating="4"></span>
-                                        <span class="fa fa-star-o" data-rating="5"></span>
-                                        <input type="hidden" name="whatever3" class="rating-value" value="0.0">
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                      <div class="star-rating"><span style="padding-right:20px;">💃🕺</span>
-                                        <span class="fa fa-star-o" data-rating="1"></span>
-                                        <span class="fa fa-star-o" data-rating="2"></span>
-                                        <span class="fa fa-star-o" data-rating="3"></span>
-                                        <span class="fa fa-star-o" data-rating="4"></span>
-                                        <span class="fa fa-star-o" data-rating="5"></span>
-                                        <input type="hidden" name="whatever1" class="rating-value" value="0.0">
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                      <div class="star-rating"><span style="padding-right:20px;">😍💖</span>
-                                        <span class="fa fa-star-o" data-rating="1"></span>
-                                        <span class="fa fa-star-o" data-rating="2"></span>
-                                        <span class="fa fa-star-o" data-rating="3"></span>
-                                        <span class="fa fa-star-o" data-rating="4"></span>
-                                        <span class="fa fa-star-o" data-rating="5"></span>
-                                        <input type="hidden" name="whatever2" class="rating-value" value="0.0">
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                      <div class="star-rating"><span style="padding-right:20px;">🎈🎉</span>
-                                        <span class="fa fa-star-o" data-rating="1"></span>
-                                        <span class="fa fa-star-o" data-rating="2"></span>
-                                        <span class="fa fa-star-o" data-rating="3"></span>
-                                        <span class="fa fa-star-o" data-rating="4"></span>
-                                        <span class="fa fa-star-o" data-rating="5"></span>
-                                        <input type="hidden" name="whatever3" class="rating-value" value="4.1">
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-                        </ul> 
-                        <div class="row col btns">
-                            <div class="col col-lg-6">
-                                <button class="btn btn-outline-primary btn-sm btn-block" type="submit">Submit</button>
-                            </div>
-                            <div class="col col-lg-6">
-                                <button class="btn btn-outline-secondary btn-sm btn-block" onclick="resetStars()" type="reset">Reset</button>
-                            </div>
-                        </div>
-                    </form>
-                        
+                          </ul> 
+                          <div class="row">
+                              <div class="col col-lg-6">
+                                  <button class="btn btn-outline-primary btn-sm btn-block" type="submit">Submit</button>
+                              </div>
+                              <div class="col col-lg-6">
+                                  <button class="btn btn-outline-secondary btn-sm btn-block" onclick="resetStars()" type="reset">Reset</button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+
+                  <!-- Modal footer
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div> -->
+
                 </div>
+              </div>
+            </div>
+
+            <!-- Happy 😁Energizing ⚡
+            // Sad 😥
+            // Annoying 😒
+            // Anxious 😰
+            // Relaxing 😎
+            // Dreamy 😇
+            // 
+            // Neutral 😐 -->
+
+              
             </center>  
         </div>       
     </body>

@@ -13,35 +13,93 @@ body
 .app-cards{
     margin: auto;
     padding: 10px 10px 10px 10px;
-    box-shadow: 5px 5px 2px 5px #eee;
 }
 #music-list{
     background-color: #eee;
-    max-height: 200px;
+    min-height: 500px;
+    max-height: 700px;
     margin-bottom: 1px;
     overflow-y:auto;
     -webkit-overflow-scrolling: touch;
 }
 #rating-list{
-    max-height: 150px;
-    margin-bottom: 1px;
+    min-height: 400px;
+    max-height: 600px;
+    padding-bottom: 15px;
     overflow-y:auto;
     -webkit-overflow-scrolling: touch;
 }
-.star-rating {
+.happy-star-rating{
+    line-height:28px;
+    font-size:1.1em;
+  }
+.sad-star-rating{
     line-height:32px;
-    font-size:1.25em;
+    font-size:1.1em;
   }
   
-.star-rating .fa-star{color: gold;}
+.happy-star-rating .fa-star{
+    color: gold;
+}
 
+.sad-star-rating .fa-star{
+    color: gold;
+}
+.annoying-star-rating{
+    line-height:28px;
+    font-size:1.1em;
+  }
+.anxious-star-rating{
+    line-height:28px;
+    font-size:1.1em;
+  }
+  
+.annoying-star-rating .fa-star{
+    color: gold;
+}
+
+.anxious-star-rating .fa-star{
+    color: gold;
+}
+
+.relaxing-star-rating{
+    line-height:28px;
+    font-size:1.1em;
+  }
+.dreamy-star-rating{
+    line-height:28px;
+    font-size:1.1em;
+  }
+  
+.relaxing-star-rating .fa-star{
+    color: gold;
+}
+
+.dreamy-star-rating .fa-star{
+    color: gold;
+}
+
+.energizing-star-rating{
+    line-height:28px;
+    font-size:1.1em;
+  }
+.neutral-star-rating{
+    line-height:28px;
+    font-size:1.1em;
+  }
+  
+.energizing-star-rating .fa-star{
+    color: gold;
+}
+
+.neutral-star-rating .fa-star{
+    color: gold;
+}
 
 li{
     display: inline;
 }
-.btns{
-    padding-top: 10px;
-}
+
 .header{
     padding: 5px 0px 5px 0px;
 }
@@ -51,15 +109,17 @@ form.rating::after {
     clear: both;
     display: table;
   }
-
+.badge-pill{
+    font-size: 14px;
+}
 
 /**
 Search
 **/
 /* Style the search field */
 #search_text[type=text] {
-    padding: 5px;
-    font-size: 16px;
+    padding: 3px;
+    font-size: 14px;
     border: 1px solid grey;
     float: left;
     max-width: 80%;
@@ -73,10 +133,10 @@ input#search_text{
 #search_button{
     float: left;
     max-width: 20%;
-    padding: 5px;
+    padding: 3px;
     background: #0d81e0;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     border: 1px solid grey;
     border-left: none; /* Prevent double borders */
     cursor: pointer;
@@ -96,19 +156,13 @@ Playlist
 #music-list li:hover{
     background-color:rgba(0, 0, 0, .1);
 }
-
-.track-num{
-    padding: auto;
+.list-group-item{
+    background-color: #eee;
 }
-.track-title{
-    padding: 0px 5px 0px 2px;
-
-}
-.track-artist{
-    padding: 0px 5px 0px 2px;
-
-}
-.track-duration{
-    padding: auto;
-
-}
+iframe {
+    border-radius: 30px;
+    max-height: max-content;
+  }
+#toggle_rating{
+    border-radius: 30px;
+  }
