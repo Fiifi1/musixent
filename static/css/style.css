@@ -16,8 +16,8 @@ body
 }
 #music-list{
     background-color: #eee;
-    min-height: 500px;
-    max-height: 700px;
+    min-height: 400px;
+    max-height: 600px;
     margin-bottom: 1px;
     overflow-y:auto;
     -webkit-overflow-scrolling: touch;
@@ -164,10 +164,10 @@ Playlist
 }
 iframe {
     border-radius: 20px;
-    max-height: 50px;
+    max-height: 70px;
   }
 .song{
-  max-height: 50px;
+  max-height: 70px;
 }
 #toggle_rating{
     border-radius: 30px;
