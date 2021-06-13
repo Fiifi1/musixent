@@ -196,10 +196,10 @@ $("#rating_form").submit((event)=>{
       url:"/submit_rating",
       data:$("form").serialize(),
       type:"POST",
-      success: (res)=>{alert(res + "Success")},
-      error: (err)=>{alert(err + "error!")}
+      success: (res)=>{alert("Success!")},
+      error: (err)=>{alert("Fatal Error!")}
     });
-    console.log("submitted form successfully");
+    //console.log("submitted form successfully");
 });
 
 //Switch between emotify dataset and spotify

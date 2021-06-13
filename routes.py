@@ -25,7 +25,7 @@ def submit_rating():
         track_source = ""  
         track_title = ""
         artist_name = ""
-        track_duration = ""
+        track_duration = 0.0
         happy_rating = form.get("happy-rating-value")
         sadness_rating = form.get("sad-rating-value")
         annoying_rating = form.get("annoying-rating-value")

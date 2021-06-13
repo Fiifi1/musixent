@@ -17,7 +17,7 @@ body
 #music-list{
     background-color: #eee;
     min-height: 400px;
-    max-height: 600px;
+    max-height: 500px;
     margin-bottom: 1px;
     overflow-y:auto;
     -webkit-overflow-scrolling: touch;
