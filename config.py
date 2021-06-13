@@ -9,9 +9,9 @@ class Config(object):
     # TESTING = False
     # CSRF_ENABLED = True
     SECRET_KEY = b'\xed`\x0c\xcc\x8e`U\x84\xb8Xs\xbd\xfe\xcf\xfd\xb6'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or 'mysql+pymysql://root:@127.0.0.1:3306/musixent'
+    #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or 'mysql+pymysql://root:@127.0.0.1:3306/musixent'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or 'mysql+pymysql://musixent_admin:musixent_pwd@www.db4free.net:3306/musixent'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or 'mysql+pymysql://musixent_admin:musixent_pwd@www.db4free.net:3306/musixent'
 
 class ProductionConfig(Config):
     DEBUG = False

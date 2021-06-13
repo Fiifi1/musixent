@@ -1,8 +1,8 @@
-"""comment user email temp!
+"""to the web
 
-Revision ID: d2b890186ed5
+Revision ID: 744d71a22a58
 Revises: 
-Create Date: 2021-06-13 14:12:21.000991
+Create Date: 2021-06-13 18:20:14.349417
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd2b890186ed5'
+revision = '744d71a22a58'
 down_revision = None
 branch_labels = None
 depends_on = None
