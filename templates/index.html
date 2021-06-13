@@ -15,11 +15,17 @@
               <div class="app-cards" id="playlist-container">
                 <div class="row header" >
                     <div class="col col-lg-6">
-                        <span class="badge badge-primary badge-pill">Play List</span>
+                        <select name="source" id="select_source">
+                          <option value="emotify" selected>Emotify</option>
+                          <option value="spotify">Spotify</option>
+                        </select>
                     </div>
                     <div class="col col-lg-6">
-                      <input id="search_text" type="text" placeholder="Search Spotify" name="search">
-                      <button id="search_button"><i class="btn-primary fa fa-search"></i></button>
+                      <span class="badge badge-primary badge-pill">Play List</span>
+                      <div class="search_spotify_pane" hidden>
+                        <input id="search_text" type="text" placeholder="Search Spotify" name="search">
+                        <button id="search_button"><i class="btn-primary fa fa-search"></i></button>
+                      </div>
                     </div>
                 </div>
                 <ul class="list-group" id="music-list">                        
@@ -34,15 +40,7 @@
                     <li><div id="song_8"></div></li>
                     <li><div id="song_9"></div></li>
                     <li><div id="song_10"></div></li>
-                    <li><div id="song_11"></div></li> 
-                    <li><div id="song_12"></div></li>                        
-                    <li><div id="song_13"></div></li>                        
-                    <li><div id="song_14"></div></li>                        
-                    <li><div id="song_15"></div></li>                        
-                    <li><div id="song_16"></div></li>                        
-                    <li><div id="song_17"></div></li>                        
-                    <li><div id="song_18"></div></li>                        
-                    <li><div id="song_19"></div></li>      
+                    <li><div id="song_11"></div></li>  
                 </ul> 
             </div>
             <div>
@@ -64,7 +62,7 @@
 
                   <!-- Modal body -->
                   <div class="modal-body">
-                      <form class="rating_form">
+                      <form id="rating_form" class="rating_form" role="form">
                           <ul style="text-align: left;" class="list-group" id="rating-list">
                               <li class="list-group-item ">
                                   <div class="row">
@@ -103,7 +101,7 @@
                                           <span class="fa fa-star-o" data-rating="3"></span>
                                           <span class="fa fa-star-o" data-rating="4"></span>
                                           <span class="fa fa-star-o" data-rating="5"></span>
-                                          <input type="hidden" name="annoying-star-rating" class="annoying-rating-value" value="0.0">
+                                          <input type="hidden" name="annoying-rating-value" class="annoying-rating-value" value="0.0">
                                         </div>
                                       </div>
                                     </div>
@@ -117,7 +115,7 @@
                                           <span class="fa fa-star-o" data-rating="3"></span>
                                           <span class="fa fa-star-o" data-rating="4"></span>
                                           <span class="fa fa-star-o" data-rating="5"></span>
-                                          <input type="hidden" name="anxious-star-rating" class="anxious-rating-value" value="0.0">
+                                          <input type="hidden" name="anxious-rating-value" class="anxious-rating-value" value="0.0">
                                         </div>
                                       </div>
                                     </div>
@@ -131,7 +129,7 @@
                                           <span class="fa fa-star-o" data-rating="3"></span>
                                           <span class="fa fa-star-o" data-rating="4"></span>
                                           <span class="fa fa-star-o" data-rating="5"></span>
-                                          <input type="hidden" name="relaxing-star-rating" class="relaxing-rating-value" value="0.0">
+                                          <input type="hidden" name="relaxing-rating-value" class="relaxing-rating-value" value="0.0">
                                         </div>
                                       </div>
                                     </div>
@@ -145,7 +143,7 @@
                                           <span class="fa fa-star-o" data-rating="3"></span>
                                           <span class="fa fa-star-o" data-rating="4"></span>
                                           <span class="fa fa-star-o" data-rating="5"></span>
-                                          <input type="hidden" name="dreamy-star-rating" class="dreamy-rating-value" value="0.0">
+                                          <input type="hidden" name="dreamy-rating-value" class="dreamy-rating-value" value="0.0">
                                         </div>
                                       </div>
                                     </div>
@@ -159,7 +157,7 @@
                                           <span class="fa fa-star-o" data-rating="3"></span>
                                           <span class="fa fa-star-o" data-rating="4"></span>
                                           <span class="fa fa-star-o" data-rating="5"></span>
-                                          <input type="hidden" name="energizing-star-rating" class="energizing-rating-value" value="0.0">
+                                          <input type="hidden" name="energizing-rating-value" class="energizing-rating-value" value="0.0">
                                         </div>
                                       </div>
                                     </div>
@@ -173,7 +171,7 @@
                                         <span class="fa fa-star-o" data-rating="3"></span>
                                         <span class="fa fa-star-o" data-rating="4"></span>
                                         <span class="fa fa-star-o" data-rating="5"></span>
-                                        <input type="hidden" name="neutral-star-rating" class="neutral-rating-value" value="0.0">
+                                        <input type="hidden" name="neutral-rating-value" class="neutral-rating-value" value="0.0">
                                       </div>
                                     </div>
                                   </div>
@@ -181,7 +179,7 @@
                           </ul> 
                           <div class="row">
                               <div class="col col-lg-6">
-                                  <button class="btn btn-outline-primary btn-sm btn-block" type="submit">Submit</button>
+                                  <button id="submit_rating" class="btn btn-outline-primary btn-sm btn-block" type="submit">Submit</button>
                               </div>
                               <div class="col col-lg-6">
                                   <button class="btn btn-outline-secondary btn-sm btn-block" onclick="resetStars()" type="reset">Reset</button>

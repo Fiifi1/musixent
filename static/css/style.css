@@ -118,7 +118,7 @@ Search
 **/
 /* Style the search field */
 #search_text[type=text] {
-    padding: 3px;
+    padding: 5px;
     font-size: 14px;
     border: 1px solid grey;
     float: left;
@@ -133,13 +133,16 @@ input#search_text{
 #search_button{
     float: left;
     max-width: 20%;
-    padding: 3px;
+    padding: 5px;
     background: #0d81e0;
     color: white;
     font-size: 14px;
     border: 1px solid grey;
     border-left: none; /* Prevent double borders */
     cursor: pointer;
+  }
+  #select_source{
+    padding: 5px;
   }
 
 
@@ -160,9 +163,12 @@ Playlist
     background-color: #eee;
 }
 iframe {
-    border-radius: 30px;
-    max-height: max-content;
+    border-radius: 20px;
+    max-height: 30px;
   }
+.song{
+  max-height: 30px;
+}
 #toggle_rating{
     border-radius: 30px;
   }

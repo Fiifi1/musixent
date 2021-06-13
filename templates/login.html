@@ -1,37 +1,26 @@
 <html>
-  <head>
-  <style type="text/css">
-  #login {
-    display: none;
-  }
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - MusiXent </title>
 
-  #loggedin {
-    display: none;
-  }
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/signup.css" rel="stylesheet">
 
-</style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+</head>
 <body>
- <div>
-    <div id="login">
-     <h1>First, log in to spotify</h1>
-     <a href="/login">Log in</a>
-    </div>
-    <div id="loggedin">
-    </div>
- </div>
-
- <script id="loggedin-template" type="text/x-handlebars-template">
-    <h1>Logged in as </h1>
-    <img id="avatar" width="200" src="" />
-    <dl>
-     <dt>Display name</dt><dd></dd>
-     <dt>Username</dt><dd></dd>
-     <dt>Email</dt><dd></dd>
-     <dt>Spotify URI</dt><dd><a href=""></a></dd>
-     <dt>Link</dt><dd><a href=""></a></dd>
-     <dt>Profile Image</dt><dd></dd>
-    </dl>
-    <p><a href="/">Log in again</a></p>
- </script>
+  <div class="container">
+      <center>
+      <form class="form-signin"  role="form">
+          <h2 class="form-signin-heading">Login</h2>
+          <input type="email" id="inputUserEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
+          <!-- <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>-->
+          <button class="btn btn-lg btn-primary btn-block" type="button">Login</button>
+          <p>New to this App?<a> Register</a>instead</p> 
+      </form>   
+    </center>
+  </div> 
 </body>
 </html>
