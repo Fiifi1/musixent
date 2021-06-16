@@ -1,20 +1,21 @@
-import re
+import re, os
 from flask import render_template, request, Response
 from app import app, db
 from models import User, Sentiment_rating
 import json
 
 @app.route("/", methods=["GET"])
-def index():
-    return render_template("index.html")
-
 @app.route("/home", methods=["GET"])
-def home():
-    return render_template("home.html")
+def index():
+    base_dir = os.path.dirname(__file__)
+    folder = "static" + os.sep + "emotify"
 
-@app.route("/player", methods=["GET"])
-def player():
-    return render_template("player.html")
+    emotify_dir = os.path.join(base_dir, folder)
+    songs = os.listdir(emotify_dir)
+
+    return render_template("index.html", songs=songs)
+
+
 
 @app.route("/submit_rating", methods=["POST"])
 def submit_rating():

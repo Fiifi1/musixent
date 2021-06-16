@@ -15,13 +15,39 @@ body
     padding: 10px 10px 10px 10px;
 }
 #music-list{
-    background-color: #eee;
+    background-color: #fff;
     min-height: 400px;
     max-height: 500px;
     margin-bottom: 1px;
     overflow-y:auto;
     -webkit-overflow-scrolling: touch;
 }
+audio{
+  background: #555;
+  min-width: 325px;
+  min-height: 40px;
+  padding: 5px;
+}
+
+.white{
+color: #fff;  
+}
+.blue{
+  color: #0d81e0;
+}
+
+li a{
+text-decoration: none;
+}
+
+li a:hover{
+  text-decoration: none;
+}
+
+.list-group-item{
+  background-color: #fff;
+}
+
 #rating-list{
     min-height: 400px;
     max-height: 600px;

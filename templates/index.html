@@ -28,20 +28,37 @@
                       </div>
                     </div>
                 </div>
-                <ul class="list-group" id="music-list">                        
-                    <li><div id="song_0"></div></li>
-                    <li><div id="song_1"></div></li>
-                    <li><div id="song_2"></div></li>
-                    <li><div id="song_3"></div></li>
-                    <li><div id="song_4"></div></li>
-                    <li><div id="song_5"></div></li>
-                    <li><div id="song_6"></div></li>
-                    <li><div id="song_7"></div></li>
-                    <li><div id="song_8"></div></li>
-                    <li><div id="song_9"></div></li>
-                    <li><div id="song_10"></div></li>
-                    <li><div id="song_11"></div></li>  
+                <div class="row">
+                  <div class="col">
+                    <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg">
+                      <source type="audio/mp3" src="{{ url_for('static', filename='emotify/sample.mp3') }}">
+                      Sorry, your browser does not support HTML5 audio.
+                  </audio>
+                  </div>
+                </div>
+              <div>
+                <ul class="list-group" id="music-list">
+                  <!--Initialized for items from spotify-->                       
+                    <li class="spotify_item" hidden><div id="song_0" ></div></li>
+                    <li class="spotify_item" hidden><div id="song_1"></div></li>
+                    <li class="spotify_item" hidden><div id="song_2"></div></li>
+                    <li class="spotify_item" hidden><div id="song_3"></div></li>
+                    <li class="spotify_item" hidden><div id="song_4"></div></li>
+                    <li class="spotify_item" hidden><div id="song_5"></div></li>
+                    <li class="spotify_item" hidden><div id="song_6"></div></li>
+                    <li class="spotify_item" hidden><div id="song_7"></div></li>
+                    <li class="spotify_item" hidden><div id="song_8"></div></li>
+                    <li class="spotify_item" hidden><div id="song_9"></div></li>
+                    <li class="spotify_item" hidden><div id="song_10"></div></li>
+                    <li class="spotify_item" hidden><div id="song_11"></div></li>  
+                    <!--Initialized for items from app / emotify-->
+                    {% for song in songs %}
+                    <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a href="{{ url_for('static', filename='emotify/'+song) }}"><span class="track_num badge"></span><span class="track_title">{{song}}</span><span class="badge track_duration"></span></a></li>
+                    {% endfor %}
+                    <!-- <li class="list-group-item" style="text-align: left;"><span class="track_num badge">2. </span><span class="track_title">track 2</span><span class="badge track_duration">2:50</span></li> -->
                 </ul> 
+                
+              </div>
             </div>
             <div>
               <button type="button" id="toggle_rating" class="btn btn-primary" data-toggle="modal" data-target="#sent_rating_modal">

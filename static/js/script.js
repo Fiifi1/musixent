@@ -188,6 +188,8 @@ let resetStars = function(){
   //document.getElementsByName("neutral-rating-value").value = 0.0;
 };
 
+
+
 //submit rating form to flask app
 $("#rating_form").submit((event)=>{
     event.preventDefault();
@@ -202,6 +204,7 @@ $("#rating_form").submit((event)=>{
     //console.log("submitted form successfully");
 });
 
+
 //Switch between emotify dataset and spotify
     $("#select_source").on("change", function() {
       var selectedOption = $(this).val();
@@ -211,6 +214,8 @@ $("#rating_form").submit((event)=>{
           // code block
           document.querySelector(".search_spotify_pane").hidden=false;
           document.querySelector(".badge-pill").hidden=true; 
+          document.querySelector(".emotify_song").hidden = true
+          document.querySelector(".spotify_item").hidden=false;
 
       //Make spotify ready
       //Document has been loaded
@@ -288,14 +293,72 @@ $("#rating_form").submit((event)=>{
           break;
         case "emotify":
           // code block
+          document.querySelector("emotify_songs").hidden = false
           document.querySelector(".search_spotify_pane").hidden = true;
           document.querySelector(".badge-pill").hidden=false;
+          document.querySelector(".spotify_item").hidden=true;
+          init();
+
+          //Try accessing in google drive folder.
+          $(document).ready(()=>{
+            let dir = 'https://drive.google.com/drive/folders/1otX_7ubPLAkuSxd_ddygKJFh2gID-BMy';
+            $.ajax({
+              url:dir,
+              type:'Get',
+              cache:false,
+              success: (data)=>{
+                console.log(data);
+              }
+
+            });
+          });
+
           break;
         default:
           // code block
           location.reload(); 
       } 
     });
+
+let audio;
+let playlist;
+let tracks;
+let current;
+
+init();
+function init(){
+    current = 0;
+    audio = $('audio');
+    playlist = $('#music-list');
+    tracks = playlist.find('li a');
+    len = tracks.length - 1;
+    audio[0].volume = .50;
+    audio[0].play();
+    playlist.find('a').click(function(e){
+        e.preventDefault();
+        link = $(this);
+        current = link.parent().index();
+        run(link, audio[0]);
+    });
+    audio[0].addEventListener('ended',function(e){
+        current++;
+        if(current == len){
+            current = 0;
+            link = playlist.find('a')[0];
+        }else{
+            link = playlist.find('a')[current];    
+        }
+        run($(link),audio[0]);
+    });
+}
+function run(link, player){
+        player.src = link.attr('href');
+        par = link.parent();
+        par.addClass('active').siblings().removeClass('active');
+        audio[0].load();
+        audio[0].play();
+        link.addClass('white').siblings().addClass('blue');
+}
 
 
 //pwd: wafrika2268
