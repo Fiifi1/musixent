@@ -1,19 +1,17 @@
+import pathlib
 import re, os
 from flask import render_template, request, Response
 from app import app, db
 from models import User, Sentiment_rating
 import json
+import utils
 
 @app.route("/", methods=["GET"])
 @app.route("/home", methods=["GET"])
 def index():
-    base_dir = os.path.dirname(__file__)
-    folder = "static" + os.sep + "emotify"
+    classical, electronic, pop, rock = utils.getAllSongs()
 
-    emotify_dir = os.path.join(base_dir, folder)
-    songs = os.listdir(emotify_dir)
-
-    return render_template("index.html", songs=songs)
+    return render_template("index.html", classical=classical, electronic=electronic, pop=pop, rock=rock)
 
 
 

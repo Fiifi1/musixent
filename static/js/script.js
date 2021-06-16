@@ -348,7 +348,7 @@ function init(){
         }else{
             link = playlist.find('a')[current];    
         }
-        run($(link),audio[0]);
+        //run($(link),audio[0]);
     });
 }
 function run(link, player){
@@ -357,7 +357,7 @@ function run(link, player){
         par.addClass('active').siblings().removeClass('active');
         audio[0].load();
         audio[0].play();
-        link.addClass('white').siblings().addClass('blue');
+        link.addClass('white').siblings().removeClass('wite').addClass('blue');
 }
 
 

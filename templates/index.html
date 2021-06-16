@@ -31,7 +31,7 @@
                 <div class="row">
                   <div class="col">
                     <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg">
-                      <source type="audio/mp3" src="{{ url_for('static', filename='emotify/sample.mp3') }}">
+                      <source type="audio/mp3" src="{{ url_for('static', filename='emotify/pop/1.mp3') }}">
                       Sorry, your browser does not support HTML5 audio.
                   </audio>
                   </div>
@@ -52,8 +52,17 @@
                     <li class="spotify_item" hidden><div id="song_10"></div></li>
                     <li class="spotify_item" hidden><div id="song_11"></div></li>  
                     <!--Initialized for items from app / emotify-->
-                    {% for song in songs %}
-                    <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a href="{{ url_for('static', filename='emotify/'+song) }}"><span class="track_num badge"></span><span class="track_title">{{song}}</span><span class="badge track_duration"></span></a></li>
+                    {% for song in classical %}
+                    <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a href="{{ url_for('static', filename='emotify/classical/'+song.name) }}"><span class="track_title">{{ song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
+                    {% endfor %}
+                    {% for song in electronic %}
+                    <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a href="{{ url_for('static', filename='emotify/electronic/'+song.name) }}"><span class="track_title">{{ song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
+                    {% endfor %}
+                    {% for song in pop %}
+                    <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a href="{{ url_for('static', filename='emotify/pop/'+song.name) }}"><span class="track_title">{{ song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
+                    {% endfor %}
+                    {% for song in rock %}
+                    <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a href="{{ url_for('static', filename='emotify/rock/'+song.name) }}"><span class="track_title">{{ song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
                     {% endfor %}
                     <!-- <li class="list-group-item" style="text-align: left;"><span class="track_num badge">2. </span><span class="track_title">track 2</span><span class="badge track_duration">2:50</span></li> -->
                 </ul> 
