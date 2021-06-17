@@ -1,229 +1,267 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>musiXent</title>
-        <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container"> 
-            <center>   
-              <div class="app-cards" id="playlist-container">
-                <div class="row header" >
-                    <div class="col col-lg-6">
-                        <select name="source" id="select_source">
-                          <option value="emotify" selected>Emotify</option>
-                          <option value="spotify">Spotify</option>
-                        </select>
-                    </div>
-                    <div class="col col-lg-6">
-                      <span class="badge badge-primary badge-pill">Play List</span>
-                      <div class="search_spotify_pane" hidden>
-                        <input id="search_text" type="text" placeholder="Search Spotify" name="search">
-                        <button id="search_button"><i class="btn-primary fa fa-search"></i></button>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>musiXent</title>
+  <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <center>
+      <div class="app-cards" id="playlist-container">
+        <div class="row header">
+          <div class="col col-lg-6">
+            <select name="source" id="select_source">
+              <option value="emotify" selected>Emotify</option>
+              <option value="spotify">Spotify</option>
+            </select>
+          </div>
+          <div class="col col-lg-6">
+            <span class="badge badge-primary badge-pill">Play List</span>
+            <div class="search_spotify_pane" hidden>
+              <input id="search_text" type="text" placeholder="Search Spotify" name="search">
+              <button id="search_button"><i class="btn-primary fa fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg" autoplay="false">
+              <source type="audio/mp3" src="{{ url_for('static', filename='emotify/pop/1.mp3') }}">
+              Sorry, your browser does not support HTML5 audio.
+            </audio>
+          </div>
+        </div>
+        <div>
+          <ul class="list-group" id="music-list">
+            <!--Initialized for items from spotify-->
+            <li class="spotify_item" hidden>
+              <div id="song_0"></div>
+            </li>
+            <li class="spotify_item" hidden>
+              <div id="song_1"></div>
+            </li>
+            <li class="spotify_item" hidden>
+              <div id="song_2"></div>
+            </li>
+            <li class="spotify_item" hidden>
+              <div id="song_3"></div>
+            </li>
+            <li class="spotify_item" hidden>
+              <div id="song_4"></div>
+            </li>
+            <li class="spotify_item" hidden>
+              <div id="song_5"></div>
+            </li>
+            <li class="spotify_item" hidden>
+              <div id="song_6"></div>
+            </li>
+            <li class="spotify_item" hidden>
+              <div id="song_7"></div>
+            </li>
+            <li class="spotify_item" hidden>
+              <div id="song_8"></div>
+            </li>
+            <li class="spotify_item" hidden>
+              <div id="song_9"></div>
+            </li>
+            <li class="spotify_item" hidden>
+              <div id="song_10"></div>
+            </li>
+            <li class="spotify_item" hidden>
+              <div id="song_11"></div>
+            </li>
+            <!--Initialized for items from app / emotify-->
+            {% for song in classical %}
+            <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a
+                href="{{ url_for('static', filename='emotify/classical/'+song.name) }}"><span class="track_title">{{
+                  song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
+            {% endfor %}
+            {% for song in electronic %}
+            <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a
+                href="{{ url_for('static', filename='emotify/electronic/'+song.name) }}"><span class="track_title">{{
+                  song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
+            {% endfor %}
+            {% for song in pop %}
+            <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a
+                href="{{ url_for('static', filename='emotify/pop/'+song.name) }}"><span class="track_title">{{
+                  song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
+            {% endfor %}
+            {% for song in rock %}
+            <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a
+                href="{{ url_for('static', filename='emotify/rock/'+song.name) }}"><span class="track_title">{{
+                  song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
+            {% endfor %}
+            <!-- <li class="list-group-item" style="text-align: left;"><span class="track_num badge">2. </span><span class="track_title">track 2</span><span class="badge track_duration">2:50</span></li> -->
+          </ul>
+
+        </div>
+      </div>
+      <div>
+        <button type="button" id="toggle_rating" class="btn btn-primary" data-toggle="modal"
+          data-target="#sent_rating_modal">
+          Rate Sentiments
+        </button>
+      </div>
+
+      <!-- The Modal -->
+      <div class="modal" id="sent_rating_modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <span class="badge badge-primary badge-pill">Rate this Song and Submit</span>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form id="rating_form" class="rating_form" role="form">
+                <ul style="text-align: left;" class="list-group" id="rating-list">
+                  <li class="list-group-item ">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="happy-star-rating"><span style="padding-right:10px;">Happy😁</span>
+                          <i class="rating-star fa fa-star-o" data-rating="1"></i>
+                          <i class="rating-star fa fa-star-o" data-rating="2"></i>
+                          <i class="rating-star fa fa-star-o" data-rating="3"></i>
+                          <i class="rating-star fa fa-star-o" data-rating="4"></i>
+                          <i class="rating-star fa fa-star-o" data-rating="5"></i>
+                          <input type="hidden" name="happy-rating-value" class="happy-rating-value" value="0.0">
+                        </div>
                       </div>
                     </div>
-                </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="sad-star-rating"><span style="padding-right:10px;">Sad😥</span>
+                          <span class="fa fa-star-o" data-rating="1"></span>
+                          <span class="fa fa-star-o" data-rating="2"></span>
+                          <span class="fa fa-star-o" data-rating="3"></span>
+                          <span class="fa fa-star-o" data-rating="4"></span>
+                          <span class="fa fa-star-o" data-rating="5"></span>
+                          <input type="hidden" name="sad-rating-value" class="sad-rating-value" value="0.0">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="annoying-star-rating"><span style="padding-right:10px;">Annoying😒</span>
+                          <span class="fa fa-star-o" data-rating="1"></span>
+                          <span class="fa fa-star-o" data-rating="2"></span>
+                          <span class="fa fa-star-o" data-rating="3"></span>
+                          <span class="fa fa-star-o" data-rating="4"></span>
+                          <span class="fa fa-star-o" data-rating="5"></span>
+                          <input type="hidden" name="annoying-rating-value" class="annoying-rating-value" value="0.0">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="anxious-star-rating"><span style="padding-right:10px;">Anxious 😰</span>
+                          <span class="fa fa-star-o" data-rating="1"></span>
+                          <span class="fa fa-star-o" data-rating="2"></span>
+                          <span class="fa fa-star-o" data-rating="3"></span>
+                          <span class="fa fa-star-o" data-rating="4"></span>
+                          <span class="fa fa-star-o" data-rating="5"></span>
+                          <input type="hidden" name="anxious-rating-value" class="anxious-rating-value" value="0.0">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="relaxing-star-rating"><span style="padding-right:10px;">Relaxing 😎</span>
+                          <span class="fa fa-star-o" data-rating="1"></span>
+                          <span class="fa fa-star-o" data-rating="2"></span>
+                          <span class="fa fa-star-o" data-rating="3"></span>
+                          <span class="fa fa-star-o" data-rating="4"></span>
+                          <span class="fa fa-star-o" data-rating="5"></span>
+                          <input type="hidden" name="relaxing-rating-value" class="relaxing-rating-value" value="0.0">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="dreamy-star-rating"><span style="padding-right:10px;">Dreamy 😇</span>
+                          <span class="fa fa-star-o" data-rating="1"></span>
+                          <span class="fa fa-star-o" data-rating="2"></span>
+                          <span class="fa fa-star-o" data-rating="3"></span>
+                          <span class="fa fa-star-o" data-rating="4"></span>
+                          <span class="fa fa-star-o" data-rating="5"></span>
+                          <input type="hidden" name="dreamy-rating-value" class="dreamy-rating-value" value="0.0">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="energizing-star-rating"><span style="padding-right:10px;">Energizing ⚡</span>
+                          <span class="fa fa-star-o" data-rating="1"></span>
+                          <span class="fa fa-star-o" data-rating="2"></span>
+                          <span class="fa fa-star-o" data-rating="3"></span>
+                          <span class="fa fa-star-o" data-rating="4"></span>
+                          <span class="fa fa-star-o" data-rating="5"></span>
+                          <input type="hidden" name="energizing-rating-value" class="energizing-rating-value"
+                            value="0.0">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="neutral-star-rating"><span style="padding-right:10px;">Neutral 😐</span>
+                          <span class="fa fa-star-o" data-rating="1"></span>
+                          <span class="fa fa-star-o" data-rating="2"></span>
+                          <span class="fa fa-star-o" data-rating="3"></span>
+                          <span class="fa fa-star-o" data-rating="4"></span>
+                          <span class="fa fa-star-o" data-rating="5"></span>
+                          <input type="hidden" name="neutral-rating-value" class="neutral-rating-value" value="0.0">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
                 <div class="row">
-                  <div class="col">
-                    <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg">
-                      <source type="audio/mp3" src="{{ url_for('static', filename='emotify/pop/1.mp3') }}">
-                      Sorry, your browser does not support HTML5 audio.
-                  </audio>
+                  <div class="col col-lg-6">
+                    <button id="submit_rating" class="btn btn-outline-primary btn-sm btn-block"
+                      type="submit">Submit</button>
+                  </div>
+                  <div class="col col-lg-6">
+                    <button class="btn btn-outline-secondary btn-sm btn-block" onclick="resetStars()"
+                      type="reset">Reset</button>
                   </div>
                 </div>
-              <div>
-                <ul class="list-group" id="music-list">
-                  <!--Initialized for items from spotify-->                       
-                    <li class="spotify_item" hidden><div id="song_0" ></div></li>
-                    <li class="spotify_item" hidden><div id="song_1"></div></li>
-                    <li class="spotify_item" hidden><div id="song_2"></div></li>
-                    <li class="spotify_item" hidden><div id="song_3"></div></li>
-                    <li class="spotify_item" hidden><div id="song_4"></div></li>
-                    <li class="spotify_item" hidden><div id="song_5"></div></li>
-                    <li class="spotify_item" hidden><div id="song_6"></div></li>
-                    <li class="spotify_item" hidden><div id="song_7"></div></li>
-                    <li class="spotify_item" hidden><div id="song_8"></div></li>
-                    <li class="spotify_item" hidden><div id="song_9"></div></li>
-                    <li class="spotify_item" hidden><div id="song_10"></div></li>
-                    <li class="spotify_item" hidden><div id="song_11"></div></li>  
-                    <!--Initialized for items from app / emotify-->
-                    {% for song in classical %}
-                    <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a href="{{ url_for('static', filename='emotify/classical/'+song.name) }}"><span class="track_title">{{ song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
-                    {% endfor %}
-                    {% for song in electronic %}
-                    <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a href="{{ url_for('static', filename='emotify/electronic/'+song.name) }}"><span class="track_title">{{ song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
-                    {% endfor %}
-                    {% for song in pop %}
-                    <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a href="{{ url_for('static', filename='emotify/pop/'+song.name) }}"><span class="track_title">{{ song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
-                    {% endfor %}
-                    {% for song in rock %}
-                    <li class="list-group-item emotify_song" style="text-align: left; padding-left: 5px;"><a href="{{ url_for('static', filename='emotify/rock/'+song.name) }}"><span class="track_title">{{ song.title }} By </span><span class="track_artist">{{ song.artist }}</span></a></li>
-                    {% endfor %}
-                    <!-- <li class="list-group-item" style="text-align: left;"><span class="track_num badge">2. </span><span class="track_title">track 2</span><span class="badge track_duration">2:50</span></li> -->
-                </ul> 
-                
-              </div>
-            </div>
-            <div>
-              <button type="button" id="toggle_rating" class="btn btn-primary" data-toggle="modal" data-target="#sent_rating_modal">
-                Rate Sentiments
-              </button>
+              </form>
             </div>
 
-            <!-- The Modal -->
-            <div class="modal" id="sent_rating_modal">
-              <div class="modal-dialog">
-                <div class="modal-content">
-
-                  <!-- Modal Header -->
-                  <div class="modal-header">
-                    <span class="badge badge-primary badge-pill">Rate this Song and Submit</span>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  </div>
-
-                  <!-- Modal body -->
-                  <div class="modal-body">
-                      <form id="rating_form" class="rating_form" role="form">
-                          <ul style="text-align: left;" class="list-group" id="rating-list">
-                              <li class="list-group-item ">
-                                  <div class="row">
-                                      <div class="col-lg-12">
-                                        <div class="happy-star-rating"><span style="padding-right:10px;">Happy😁</span>
-                                          <i class="rating-star fa fa-star-o" data-rating="1"></i>
-                                          <i class="rating-star fa fa-star-o" data-rating="2"></i>
-                                          <i class="rating-star fa fa-star-o" data-rating="3"></i>
-                                          <i class="rating-star fa fa-star-o" data-rating="4"></i>
-                                          <i class="rating-star fa fa-star-o" data-rating="5"></i>
-                                          <input type="hidden" name="happy-rating-value" class="happy-rating-value" value="0.0">
-                                        </div>
-                                      </div>
-                                    </div>
-                               </li>
-                              <li class="list-group-item">
-                                  <div class="row">
-                                      <div class="col-lg-12">
-                                        <div class="sad-star-rating"><span style="padding-right:10px;">Sad😥</span>
-                                          <span class="fa fa-star-o" data-rating="1"></span>
-                                          <span class="fa fa-star-o" data-rating="2"></span>
-                                          <span class="fa fa-star-o" data-rating="3"></span>
-                                          <span class="fa fa-star-o" data-rating="4"></span>
-                                          <span class="fa fa-star-o" data-rating="5"></span>
-                                          <input type="hidden" name="sad-rating-value" class="sad-rating-value" value="0.0">
-                                        </div>
-                                      </div>
-                                    </div>
-                              </li>
-                              <li class="list-group-item">
-                                  <div class="row">
-                                      <div class="col-lg-12">
-                                        <div class="annoying-star-rating"><span style="padding-right:10px;">Annoying😒</span>
-                                          <span class="fa fa-star-o" data-rating="1"></span>
-                                          <span class="fa fa-star-o" data-rating="2"></span>
-                                          <span class="fa fa-star-o" data-rating="3"></span>
-                                          <span class="fa fa-star-o" data-rating="4"></span>
-                                          <span class="fa fa-star-o" data-rating="5"></span>
-                                          <input type="hidden" name="annoying-rating-value" class="annoying-rating-value" value="0.0">
-                                        </div>
-                                      </div>
-                                    </div>
-                              </li>
-                              <li class="list-group-item">
-                                  <div class="row">
-                                      <div class="col-lg-12">
-                                        <div class="anxious-star-rating"><span style="padding-right:10px;">Anxious 😰</span>
-                                          <span class="fa fa-star-o" data-rating="1"></span>
-                                          <span class="fa fa-star-o" data-rating="2"></span>
-                                          <span class="fa fa-star-o" data-rating="3"></span>
-                                          <span class="fa fa-star-o" data-rating="4"></span>
-                                          <span class="fa fa-star-o" data-rating="5"></span>
-                                          <input type="hidden" name="anxious-rating-value" class="anxious-rating-value" value="0.0">
-                                        </div>
-                                      </div>
-                                    </div>
-                              </li>
-                              <li class="list-group-item">
-                                  <div class="row">
-                                      <div class="col-lg-12">
-                                        <div class="relaxing-star-rating"><span style="padding-right:10px;">Relaxing 😎</span>
-                                          <span class="fa fa-star-o" data-rating="1"></span>
-                                          <span class="fa fa-star-o" data-rating="2"></span>
-                                          <span class="fa fa-star-o" data-rating="3"></span>
-                                          <span class="fa fa-star-o" data-rating="4"></span>
-                                          <span class="fa fa-star-o" data-rating="5"></span>
-                                          <input type="hidden" name="relaxing-rating-value" class="relaxing-rating-value" value="0.0">
-                                        </div>
-                                      </div>
-                                    </div>
-                              </li>
-                              <li class="list-group-item">
-                                  <div class="row">
-                                      <div class="col-lg-12">
-                                        <div class="dreamy-star-rating"><span style="padding-right:10px;">Dreamy 😇</span>
-                                          <span class="fa fa-star-o" data-rating="1"></span>
-                                          <span class="fa fa-star-o" data-rating="2"></span>
-                                          <span class="fa fa-star-o" data-rating="3"></span>
-                                          <span class="fa fa-star-o" data-rating="4"></span>
-                                          <span class="fa fa-star-o" data-rating="5"></span>
-                                          <input type="hidden" name="dreamy-rating-value" class="dreamy-rating-value" value="0.0">
-                                        </div>
-                                      </div>
-                                    </div>
-                              </li>
-                              <li class="list-group-item">
-                                  <div class="row">
-                                      <div class="col-lg-12">
-                                        <div class="energizing-star-rating"><span style="padding-right:10px;">Energizing ⚡</span>
-                                          <span class="fa fa-star-o" data-rating="1"></span>
-                                          <span class="fa fa-star-o" data-rating="2"></span>
-                                          <span class="fa fa-star-o" data-rating="3"></span>
-                                          <span class="fa fa-star-o" data-rating="4"></span>
-                                          <span class="fa fa-star-o" data-rating="5"></span>
-                                          <input type="hidden" name="energizing-rating-value" class="energizing-rating-value" value="0.0">
-                                        </div>
-                                      </div>
-                                    </div>
-                              </li>
-                              <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                      <div class="neutral-star-rating"><span style="padding-right:10px;">Neutral 😐</span>
-                                        <span class="fa fa-star-o" data-rating="1"></span>
-                                        <span class="fa fa-star-o" data-rating="2"></span>
-                                        <span class="fa fa-star-o" data-rating="3"></span>
-                                        <span class="fa fa-star-o" data-rating="4"></span>
-                                        <span class="fa fa-star-o" data-rating="5"></span>
-                                        <input type="hidden" name="neutral-rating-value" class="neutral-rating-value" value="0.0">
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-                          </ul> 
-                          <div class="row">
-                              <div class="col col-lg-6">
-                                  <button id="submit_rating" class="btn btn-outline-primary btn-sm btn-block" type="submit">Submit</button>
-                              </div>
-                              <div class="col col-lg-6">
-                                  <button class="btn btn-outline-secondary btn-sm btn-block" onclick="resetStars()" type="reset">Reset</button>
-                              </div>
-                          </div>
-                      </form>
-                  </div>
-
-                  <!-- Modal footer
+            <!-- Modal footer
                   <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                   </div> -->
 
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>
+      </div>
 
-            <!-- Happy 😁Energizing ⚡
+      <!-- Happy 😁Energizing ⚡
             // Sad 😥
             // Annoying 😒
             // Anxious 😰
@@ -232,13 +270,14 @@
             // 
             // Neutral 😐 -->
 
-              
-            </center>  
-        </div>       
-    </body>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v4.7.0/js/all.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript"></script>
+
+    </center>
+  </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v4.7.0/js/all.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript"></script>
+
 </html>

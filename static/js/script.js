@@ -299,20 +299,6 @@ $("#rating_form").submit((event)=>{
           document.querySelector(".spotify_item").hidden=true;
           init();
 
-          //Try accessing in google drive folder.
-          $(document).ready(()=>{
-            let dir = 'https://drive.google.com/drive/folders/1otX_7ubPLAkuSxd_ddygKJFh2gID-BMy';
-            $.ajax({
-              url:dir,
-              type:'Get',
-              cache:false,
-              success: (data)=>{
-                console.log(data);
-              }
-
-            });
-          });
-
           break;
         default:
           // code block
