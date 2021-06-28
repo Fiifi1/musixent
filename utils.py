@@ -1,9 +1,21 @@
 import os
 import eyed3
-from pathlib import Path
 
 base_dir = os.path.dirname(__file__)
 folder = "static" + os.sep + "emotify"
+
+
+#Unfold song to get details in order to send to db
+def get_song_details(genre, name):
+    track_path = os.path.join(folder, genre)
+    track_path = os.path.join(track_path, name)
+    track = eyed3.load(track_path)
+    artist = track.tag.artist
+    title = track.tag.title
+    return title, artist
+    
+get_song_details('classical', '18.mp3')
+
 def getAllSongs():
     emotify_dir = os.path.join(base_dir, folder)
 

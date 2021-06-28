@@ -17,28 +17,33 @@ def index():
 
 @app.route("/submit_rating", methods=["POST"])
 def submit_rating():
+    
     if request.method == "POST":
         form = request.form
-        user_email = ""
-        track_id = ""
-        track_source = ""  
-        track_title = ""
-        artist_name = ""
-        track_duration = 0.0
-        happy_rating = form.get("happy-rating-value")
-        sadness_rating = form.get("sad-rating-value")
-        annoying_rating = form.get("annoying-rating-value")
-        anxious_rating = form.get("anxious-rating-value")
-        energizing_rating = form.get("energizing-rating-value")
-        neutral_rating = form.get("neutral-rating-value")
-        dreamy_rating = form.get("dreamy-rating-value")
-        relaxing_rating = form.get("relaxing-rating-value")
+        print(form)
+        track_url = form.get('curSrc')
+        track_url = str(track_url).split('/')
+        title, artist = utils.get_song_details(track_url[5], track_url[6])
+
+        #user_email = ""
+        #track_id = ""
+        #track_source = ""  
+        #track_duration = 1.0
+        track_title = title
+        artist_name = artist
+        happy_rating = form.get("happy_rating")
+        sadness_rating = form.get("sadness_rating")
+        annoying_rating = form.get("annoying_rating")
+        anxious_rating = form.get("anxious_rating")
+        energizing_rating = form.get("energizing_rating")
+        neutral_rating = form.get("neutral_rating")
+        dreamy_rating = form.get("dreamy_rating")
+        relaxing_rating = form.get("relaxing_rating")
+        print(happy_rating, sadness_rating, annoying_rating, anxious_rating, energizing_rating, neutral_rating, dreamy_rating, neutral_rating, relaxing_rating)
         try:
             #instantiate sentiment rating
-            rating = Sentiment_rating(track_id=track_id, 
-            track_source=track_source, track_title=track_title, artist_name=artist_name, 
-            track_duration=track_duration, happy_rating=happy_rating, 
-            sadness_rating=sadness_rating, annoying_rating=annoying_rating,
+            rating = Sentiment_rating(track_title=track_title, artist_name=artist_name, 
+            happy_rating=happy_rating,sadness_rating=sadness_rating, annoying_rating=annoying_rating,
             anxious_rating=anxious_rating, energizing_rating=energizing_rating, 
             neutral_rating=neutral_rating, dreamy_rating=dreamy_rating, relaxing_rating=relaxing_rating)
             rating.set_date()

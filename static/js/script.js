@@ -189,22 +189,6 @@ let resetStars = function(){
 };
 
 
-
-//submit rating form to flask app
-$("#rating_form").submit((event)=>{
-    event.preventDefault();
-
-    $.ajax({
-      url:"/submit_rating",
-      data:$("form").serialize(),
-      type:"POST",
-      success: (res)=>{alert("Success!")},
-      error: (err)=>{alert("Fatal Error!")}
-    });
-    //console.log("submitted form successfully");
-});
-
-
 //Switch between emotify dataset and spotify
     $("#select_source").on("change", function() {
       var selectedOption = $(this).val();
@@ -216,6 +200,7 @@ $("#rating_form").submit((event)=>{
           document.querySelector(".badge-pill").hidden=true; 
           document.querySelector(".emotify_song").hidden = true
           document.querySelector(".spotify_item").hidden=false;
+          document.querySelector(".audioplayer").hidden=true;
 
       //Make spotify ready
       //Document has been loaded
@@ -293,7 +278,8 @@ $("#rating_form").submit((event)=>{
           break;
         case "emotify":
           // code block
-          document.querySelector("emotify_songs").hidden = false
+          document.querySelector(".audioplayer").hidden=false;
+          document.querySelector(".emotify_songs").hidden = false
           document.querySelector(".search_spotify_pane").hidden = true;
           document.querySelector(".badge-pill").hidden=false;
           document.querySelector(".spotify_item").hidden=true;
@@ -306,27 +292,39 @@ $("#rating_form").submit((event)=>{
       } 
     });
 
-let audio;
+let audio = document.getElementById("audio");
 let playlist;
 let tracks;
 let current;
+let currentSource;
+
+
+audio.onplaying = ()=>{
+  currentSource = audio.currentSrc;
+  if (audio.currentTime >= 0){
+    document.querySelector(".toggle_rating").hidden = false;
+  }
+};
+
+
 
 init();
 function init(){
     current = 0;
-    audio = $('audio');
+    audio = document.getElementById("audio");
     playlist = $('#music-list');
     tracks = playlist.find('li a');
     len = tracks.length - 1;
-    audio[0].volume = .50;
-    audio[0].play();
+    audio.volume = .50;
+    audio.play();
     playlist.find('a').click(function(e){
         e.preventDefault();
         link = $(this);
         current = link.parent().index();
-        run(link, audio[0]);
+        run(link, audio);
     });
-    audio[0].addEventListener('ended',function(e){
+    audio.addEventListener('ended',function(e){
+        e.preventDefault();
         current++;
         if(current == len){
             current = 0;
@@ -341,10 +339,40 @@ function run(link, player){
         player.src = link.attr('href');
         par = link.parent();
         par.addClass('active').siblings().removeClass('active');
-        audio[0].load();
-        audio[0].play();
-        link.addClass('white').siblings().removeClass('wite').addClass('blue');
+        audio.load();
+        audio.play();
+        link.addClass('white').siblings().removeClass('white').addClass('blue');
 }
+
+// $(".toggle_rating").click(()=>{
+// console.log(currentSource);
+    
+// });
+//submit rating form to flask app
+$("#rating_form").submit((event)=>{
+  event.preventDefault();
+  let curSrc =  currentSource;
+  let formData = {
+    happy_rating: $("input[name='happy-rating-value']").val(),
+    sadness_rating: $("input[name='sad-rating-value']").val(),
+    annoying_rating: $("input[name='annoying-rating-value']").val(),
+    anxious_rating: $("input[name='anxious-rating-value']").val(),
+    relaxing_rating: $("input[name='relaxing-rating-value']").val(),
+    dreamy_rating: $("input[name='dreamy-rating-value']").val(),
+    energizing_rating: $("input[name='energizing-rating-value']").val(),
+    neutral_rating: $("input[name='neutral-rating-value']").val(),
+    curSrc: curSrc
+    };
+  $.ajax({
+    url:"/submit_rating",
+    data:formData,
+    type:"POST",
+    success: (res)=>{alert("Success!")},
+    error: (err)=>{alert("Fatal Error!")}
+  });
+  resetStars();
+  //console.log("submitted form successfully");
+});
 
 
 //pwd: wafrika2268

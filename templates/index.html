@@ -32,7 +32,7 @@
         </div>
         <div class="row">
           <div class="col">
-            <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg" autoplay="false">
+            <audio id="audio" class="audioplayer" preload="auto" tabindex="0" controls="" type="audio/mpeg" autoplay="false">
               <source type="audio/mp3" src="{{ url_for('static', filename='emotify/pop/1.mp3') }}">
               Sorry, your browser does not support HTML5 audio.
             </audio>
@@ -104,7 +104,7 @@
         </div>
       </div>
       <div>
-        <button type="button" id="toggle_rating" class="btn btn-primary" data-toggle="modal"
+        <button type="button" class="btn btn-primary toggle_rating" data-toggle="modal" hidden="true"
           data-target="#sent_rating_modal">
           Rate Sentiments
         </button>
