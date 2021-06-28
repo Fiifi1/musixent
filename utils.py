@@ -14,7 +14,6 @@ def get_song_details(genre, name):
     title = track.tag.title
     return title, artist
     
-get_song_details('classical', '18.mp3')
 
 def getAllSongs():
     emotify_dir = os.path.join(base_dir, folder)
