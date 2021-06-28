@@ -20,11 +20,9 @@ def submit_rating():
     
     if request.method == "POST":
         form = request.form
-        print(form)
         track_url = form.get('curSrc')
         track_url = str(track_url).split('/')
         title, artist = utils.get_song_details(track_url[5], track_url[6])
-
         #user_email = ""
         #track_id = ""
         #track_source = ""  
