@@ -279,7 +279,7 @@ let resetStars = function(){
         case "emotify":
           // code block
           document.querySelector(".audioplayer").hidden=false;
-          document.querySelector(".emotify_songs").hidden = false
+          document.querySelector(".emotify_song").hidden = false
           document.querySelector(".search_spotify_pane").hidden = true;
           document.querySelector(".badge-pill").hidden=false;
           document.querySelector(".spotify_item").hidden=true;
