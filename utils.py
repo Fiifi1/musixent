@@ -4,7 +4,6 @@ import eyed3
 base_dir = os.path.dirname(__file__)
 folder = "static" + os.sep + "emotify"
 
-
 #Unfold song to get details in order to send to db
 def get_song_details(genre, name):
     track_path = os.path.join(folder, genre)
